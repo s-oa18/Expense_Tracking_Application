@@ -1,33 +1,67 @@
 <?php
-session_start();	//create or retrieve session
 
-if (IsSet($_SESSION["user"]))			//if username exists in session, user has logged in
-	{
-	header("Location: home.php");		//forward to use home page
-	exit();
-	}
+$is_invalid = false;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = sprintf("SELECT * FROM user
+                    WHERE email = '%s'",
+                   $mysqli->real_escape_string($_POST["email"]));
+    
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+    
+    if ($user) {
+        
+        if (password_verify($_POST["password"], $user["password_hash"])) {
+			session_start();
+			session_regenerate_id();
+			$_SESSION["user"] = $user["name"];
+			header("Location: home.php");
+			exit;
+		}
+    }
+    
+    $is_invalid = true;
+}
+
 ?>
-<!--
-	Otherwise show login page/form.
--->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Login Page</title>
-		<link rel="stylesheet" href="assets/CSS/style.css">
-		
-	</head>
-	<body>
-		<section class="form">	
-			<h3>Log into account</h3>
-			<!--
-				This form submits the username and password to the script validate.php.
-			-->
-			<form id="login" method="post" action="validate.php">
-				Username: <input type="text" name="user"> <br/>
-				Password: <input type="password" name="password"> <br/>
-				<button type="submit" class="login_button">Login</button>
-			</form>
-		</section>
-	</body>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    
+    <h1>Login</h1>
+    
+    <?php if ($is_invalid): ?>
+        <em>Invalid login</em>
+    <?php endif; ?>
+    
+    <form method="post">
+        <label for="email">email</label>
+        <input type="email" name="email" id="email"
+               value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        
+        <button>Log in</button>
+    </form>
+    
+</body>
 </html>
+
+
+
+
+
+
+
+
