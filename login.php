@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" ></script>
     <script src="/js/validation.js" defer></script>
 </head>
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <em>Invalid login</em>
     <?php endif; ?>
     
-    <form method="post">
+    <form method="post" >
         <label for="email">email</label>
         <input type="email" name="email" id="email"
                value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
@@ -55,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="password" name="password" id="password">
         
         <button>Log in</button>
+        <div >
+        <h3>New User?</h3>
+        <p><a href="signup.html">Register!</a></p>
+      </div>
         
         
     </form>
