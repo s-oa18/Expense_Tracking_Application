@@ -13,8 +13,9 @@ validation
     {
       rule: "email",
     },
+
     {
-      validator: (value) => () => {
+      validator: (value) => {
         return fetch("validate-email.php?email=" + encodeURIComponent(value))
           .then(function (response) {
             return response.json();
@@ -23,7 +24,7 @@ validation
             return json.available;
           });
       },
-      errorMessage: "email already taken",
+      errorMessage: "Email already taken",
     },
   ])
   .addField("#password", [
