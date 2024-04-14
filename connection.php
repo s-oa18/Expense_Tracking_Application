@@ -2,7 +2,7 @@
 $servername = "localhost";
 $dbname='expense_tracker';
 $username = "root";
-$password = "root";
+$password = "";
 // Create connection
 $db = new mysqli($servername, $username, $password, $dbname);
 // Check connection
