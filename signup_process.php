@@ -30,10 +30,10 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 
-// Database connection details
+
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "expense_tracker";
 
 // Create connection
@@ -44,13 +44,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve user input from the form
+
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
 
-// Prepare and execute the SQL statement to insert data into the database
+
 $sql = "INSERT INTO users (username, email, password ) VALUES ('$username','$email','$password') ";
 
 if ($conn->query($sql) === TRUE) {
@@ -59,7 +59,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
 
