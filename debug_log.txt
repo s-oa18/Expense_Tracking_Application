@@ -1,0 +1,9 @@
+Category: Fuel; Amount: 90; Comment: father
+
+Category: Groccery; Amount: 90; Comment: thanks
+
+Category: Electricity; Amount: 3; Comment: thaniks
+
+Category: Food; Amount: 50; Comment: heacy
+
+Category: Food; Amount: 100; Comment: thanks
