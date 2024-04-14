@@ -9,8 +9,6 @@ $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : null;
 
 $expenses = [];
 
-
-
 if ($userId) {
     $sql = "SELECT expense_category, amount, comment FROM expense WHERE user_id = ?";
     $stmt = mysqli_prepare($db, $sql);
