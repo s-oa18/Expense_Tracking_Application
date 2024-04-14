@@ -22,28 +22,20 @@
     <div class="container">
         <div class="con_one">
             <img src="images/budget-logo 1.png" alt="">
-            <!-- <img class="img_ellipse" src="images/Ellipse 1.png" alt=""> -->
+            
             <img class="img_login" src="images/login 1.png" alt="">
         </div>
         <div class="con_two">
             <h1>Sign in Account</h1>
 
-            <form method="post" action="login_process.php" >
-                <!-- <label for="">name</label> -->
+            <form  action="admin_login.php" >
+                
                     <input type="email" name= "email" placeholder ="Email"   id="email" >
                     <input type="password" name= "password" placeholder = "Password"  id="password">
                     <button>Login</button>
             </form>
 
-            <div class="new_user">
-                <p class="new"> New User?</p>
-                <p><a class="register" href="signup.html">Register</a></p>
-
-                
-                <a class="admin" href="admin_login.php"><p>Admin login </p></a>
-               
-                
-            </div>
+           
             
            
         </div>
