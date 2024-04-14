@@ -38,10 +38,14 @@
             <div class="new_user">
                 <p class="new"> New User?</p>
                 <p><a class="register" href="signup.html">Register</a></p>
+
+                
+                <a class="admin" href="admin_login.php"><p>Admin login </p></a>
+               
                 
             </div>
             
-
+           
         </div>
 
     </div>
