@@ -78,7 +78,7 @@
                 </div>
                 <div class="dash">
                     <img src="images/expense 1.png" alt="">
-                    <p><a href="delete.php">Delete Account</a></p>
+                    <p><a href="delete_user.php">Delete Account</a></p>
                 </div>
                 <div class="dash">
                     <img src="images/logout 1.png" alt="">
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="home-two">
+        <div class="home">
             <div>
                 <h2>Summary</h2>
                 <p>Total Users: <?php echo $userCount; ?></p>
