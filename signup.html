@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register Expense Tracker</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    
-        
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="con_one">
-            <img src="images/budget-logo 1.png" alt="">
-            <!-- <img class="img_ellipse" src="images/Ellipse 1.png" alt=""> -->
-            <img class="img_login" src="images/login 1.png" alt="">
+      <div class="con_one">
+        <img src="images/budget-logo 1.png" alt="" />
+        <!-- <img class="img_ellipse" src="images/Ellipse 1.png" alt=""> -->
+        <img class="img_login" src="images/login 1.png" alt="" />
+      </div>
+      <div class="con_two">
+        <h1>Create Account</h1>
+
+        <form action="signup_process.php" method="post">
+          <!-- <label for="">name</label> -->
+
+          <!-- <input type="name" placeholder ="name"   id="name" > -->
+          <input
+            type="text"
+            name="username"
+            placeholder="Name or Business name"
+            id="business_name"
+          />
+
+          <input type="email" name="email" placeholder="Email" id="email" />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password"
+          />
+
+          <input
+            type="password"
+            name="password_confirmation"
+            placeholder="confirm Password"
+            id="confirm password"
+          />
+
+          <button>Register</button>
+        </form>
+
+        <div class="new_user">
+          <p class="new">Already a User?</p>
+          <p><a class="register" href="index.php">Sign in</a></p>
         </div>
-        <div class="con_two">
-            <h1>Create Account</h1>
-
-            <form action="signup_process.php" method="post">
-                <!-- <label for="">name</label> -->
-                
-                <!-- <input type="name" placeholder ="name"   id="name" > -->
-                <input type="text" name="username" placeholder ="Name or Business name"   id="business_name" >
-                
-                <input type="email" name="email" placeholder ="Email"   id="email" >
-        
-                <input type="password" name="password" placeholder = "Password"  id="password">
-            
-                <input type="password" name="password_confirmation" placeholder = "confirm Password"  id="confirm password">
-                
-                
-        
-        <button>Register</button>
-            </form>
-
-            <div class="new_user">
-                <p class="new"> Already a User?</p>
-                <p><a class="register" href="index.php">Sign in</a></p>
-                
-            </div>
-            
- 
-        </div>
-
+      </div>
     </div>
-</body>
+  </body>
 </html>

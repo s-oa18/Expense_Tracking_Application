@@ -32,15 +32,19 @@
                 <!-- <label for="">name</label> -->
                     <input type="email" name= "email" placeholder ="Email"   id="email" >
                     <input type="password" name= "password" placeholder = "Password"  id="password">
+                    <div>
+                    <label for="role">Role:</label>
+                    <select name="role" id="role" required>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
                     <button>Login</button>
             </form>
 
             <div class="new_user">
                 <p class="new"> New User?</p>
                 <p><a class="register" href="signup.html">Register</a></p>
-
-                
-                <a class="admin" href="admin_login.php"><p>Admin login </p></a>
                
                 
             </div>

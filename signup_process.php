@@ -33,7 +33,7 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "expense_tracker";
 
 // Create connection
@@ -66,4 +66,4 @@ $conn->close();
 
 
 
-<!-- < -->
+

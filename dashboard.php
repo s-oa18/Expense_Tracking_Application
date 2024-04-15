@@ -1,8 +1,13 @@
 <?php
+
 include ('connection.php');
 session_start();
 
 
+$successMessage = "";
+if (isset($_GET['success']) && $_GET['success'] == 'expense_updated') {
+    $successMessage = '<div class="success-message">Expense updated successfully!</div>';
+}
 
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : null;
 
@@ -10,7 +15,7 @@ $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : null;
 $expenses = [];
 
 if ($userId) {
-    $sql = "SELECT expense_category, amount, comment FROM expense WHERE user_id = ?";
+    $sql = "SELECT expense_id, expense_category, amount, comment FROM expense WHERE user_id = ?";
     $stmt = mysqli_prepare($db, $sql);
     if (!$stmt) {
         echo "Error preparing statement: " . mysqli_error($db);
@@ -98,12 +103,12 @@ if ($userId) {
 
 
                 </div>
-                <div class="dash">
+                <!-- <div class="dash">
 
                     <img src="images/expense 1.png" alt="">
                     <p>Expense</p>
 
-                </div>
+                </div> -->
                 <div class="dash">
 
                     <img src="images/logout 1.png" alt="">
@@ -111,7 +116,7 @@ if ($userId) {
 
                 </div>
 
-<!-- 
+     <!-- 
                 <div class="dash">
 
                     <img src="images/settings 1.png" alt="">
@@ -128,7 +133,7 @@ if ($userId) {
         </div>
         <div class="home_two">
         <div class="expenses">
-    <div class="shopping">
+     <div class="shopping">
         
         <img src="images/shopping-cart 1.png" alt="Grocery">
         <!-- <h3>Grocery</h3> -->
@@ -182,10 +187,11 @@ if ($userId) {
                 <h3>Category: <?php echo htmlspecialchars($expense['expense_category']); ?></h3>
                 <p>Amount: $<?php echo htmlspecialchars($expense['amount']); ?></p>
                 <p>Comment: <?php echo htmlspecialchars($expense['comment']); ?></p>
-                <div>
-                <button>edit</button>
-                <button>delete</button>
-                </div>
+                <form action="edit_expense.php" method="post">
+                <input type="hidden" name="expense_id" value="<?php echo $expense['expense_id']; ?>">
+                <button type="submit">Edit</button>
+                
+                </form>
                 
             </div>
             
@@ -197,7 +203,7 @@ if ($userId) {
 
         </div>
 
-
+    
 </body>
 
 </html>

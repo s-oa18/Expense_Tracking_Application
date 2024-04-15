@@ -1,12 +1,49 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // header("location: index.php");
+    
     exit;
 }
+
+// Set the userId session variable
+$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : null;
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $expense_category = isset($_POST['category']) ? $_POST['category'] : "";
+    $amount = isset($_POST['amount']) ? $_POST['amount'] : "";
+    $comment = isset($_POST['comment']) ? $_POST['comment'] : "";
+
+    // Check if any of the fields are empty
+    if (empty($expense_category) || empty($amount) || empty($comment)) {
+        echo "All fields are required.";
+    } else {
+        // Insert the expense into the database
+        include('connection.php');
+
+        $sql = "INSERT INTO expense (expense_category, amount, comment, user_id) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($db, $sql);
+        if (!$stmt) {
+            echo "Error preparing statement: " . mysqli_error($db);
+            exit;
+        }
+        mysqli_stmt_bind_param($stmt, 'sssi', $expense_category, $amount, $comment, $userId);
+        $result = mysqli_stmt_execute($stmt);
+
+        if ($result) {
+            
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            echo "Error inserting data: " . mysqli_error($db);
+        }
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,11 +99,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <img src="images/logout 1.png" alt="">
                     <p><a href="logout.php">Logout</a></p>
                 </div>
-
-
-
-
-
             </div>
 
 
@@ -86,7 +118,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             // echo "Comment: " . $comment . "<br>";
 ?>
             <h4>Income Category</h4>
-            <form method="post" action="add_expense.php" class="expense_form" id="expenseForm">
+            <form method="post" action="home.php" class="expense_form" id="expenseForm">
             <div id="validationMessage"></div>
                 <select class=""  name="category" id="dropdown">
                     <option value="">Select Category</option>
