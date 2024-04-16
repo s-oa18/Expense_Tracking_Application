@@ -30,10 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Edit Expense</title>
                 <link rel="stylesheet" href="css/home.css">
-                <!-- Add any additional styling or scripts as needed -->
+                <style>
+                    input[type="text"], [type="number"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 11px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin: 20px;
+  width: 200px
+  
+}
+                </style>
+                
             </head>
             <body>
-                <div class="edit_expense_form">
+                <div class="edit_expense_form " style="margin-left: 70px">
                     <h2>Edit Expense</h2>
                     <form action="update_expense.php" method="post">
                         <input type="hidden" name="expense_id" value="<?php echo $expense_id; ?>">

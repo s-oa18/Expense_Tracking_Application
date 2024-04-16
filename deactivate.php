@@ -15,7 +15,7 @@
         if ($success === 'user_deactivated') {
             $successMessage = "User deactivated successfully!";
         }
-        // You can add more success message cases for other actions if needed
+   
     }
 
     // Query to retrieve a list of users
@@ -45,7 +45,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="margin-left: 70px">
         <h2>Deactivate User Accounts</h2>
         <!-- Display the success message if it exists -->
         <?php if (!empty($successMessage)): ?>

@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <div class="home">
+    <div class="home" style="margin-left: 70px">
     <div>
     <h2>Add User</h2>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

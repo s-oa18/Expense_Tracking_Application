@@ -49,7 +49,7 @@ $resultUsers = mysqli_query($db, $sqlUsers);
 </head>
 
 <body>
-    <div class="">
+    <div class="delete" style="margin-left: 70px">
 
     <h1>Delete User Accounts</h1>
 

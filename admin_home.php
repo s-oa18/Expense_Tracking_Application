@@ -86,9 +86,9 @@
                 </div>
             </div>
         </div>
-        <div class="home">
+        <div class="summary" style="margin-left: 100px; margin-top: 70px ">
             <div>
-                <h2>Summary</h2>
+                <h1>Summary</h1>
                 <p>Total Users: <?php echo $userCount; ?></p>
                 <p>Total Expenses: <?php echo $totalExpensesCount; ?></p>
             </div>
